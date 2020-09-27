@@ -9,10 +9,18 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let slidingViewController = MySliderViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        slidingViewController.view.backgroundColor = .white
         view.backgroundColor = .red
+        
+        // Functionality for addChildViewController
+        addChild(slidingViewController)
+        view.addSubview(slidingViewController.view)
+        slidingViewController.didMove(toParent: self)
     }
 }

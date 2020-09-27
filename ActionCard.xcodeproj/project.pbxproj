@@ -12,6 +12,11 @@
 		F03E54EE2520E0B700D2EB56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03E54ED2520E0B700D2EB56 /* ViewController.swift */; };
 		F03E54F32520E0B800D2EB56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F03E54F22520E0B800D2EB56 /* Assets.xcassets */; };
 		F03E54F62520E0B800D2EB56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03E54F42520E0B800D2EB56 /* LaunchScreen.storyboard */; };
+		F03E54FF2520FA1100D2EB56 /* SlidingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03E54FE2520FA1100D2EB56 /* SlidingViewController.swift */; };
+		F03E550125210F5D00D2EB56 /* SVCPanGestureConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03E550025210F5D00D2EB56 /* SVCPanGestureConfiguration.swift */; };
+		F03E55032521252000D2EB56 /* SVCState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03E55022521252000D2EB56 /* SVCState.swift */; };
+		F03E550525212CC800D2EB56 /* UIPanGestureRecognizerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03E550425212CC800D2EB56 /* UIPanGestureRecognizerExt.swift */; };
+		F03E5507252139E900D2EB56 /* MySliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03E5506252139E900D2EB56 /* MySliderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		F03E54F22520E0B800D2EB56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F03E54F52520E0B800D2EB56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F03E54F72520E0B800D2EB56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F03E54FE2520FA1100D2EB56 /* SlidingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingViewController.swift; sourceTree = "<group>"; };
+		F03E550025210F5D00D2EB56 /* SVCPanGestureConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVCPanGestureConfiguration.swift; sourceTree = "<group>"; };
+		F03E55022521252000D2EB56 /* SVCState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVCState.swift; sourceTree = "<group>"; };
+		F03E550425212CC800D2EB56 /* UIPanGestureRecognizerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPanGestureRecognizerExt.swift; sourceTree = "<group>"; };
+		F03E5506252139E900D2EB56 /* MySliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySliderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +64,27 @@
 		F03E54E82520E0B700D2EB56 /* ActionCard */ = {
 			isa = PBXGroup;
 			children = (
+				F03E54FD2520E37000D2EB56 /* Common */,
 				F03E54E92520E0B700D2EB56 /* AppDelegate.swift */,
 				F03E54EB2520E0B700D2EB56 /* SceneDelegate.swift */,
 				F03E54ED2520E0B700D2EB56 /* ViewController.swift */,
 				F03E54F22520E0B800D2EB56 /* Assets.xcassets */,
 				F03E54F42520E0B800D2EB56 /* LaunchScreen.storyboard */,
 				F03E54F72520E0B800D2EB56 /* Info.plist */,
+				F03E5506252139E900D2EB56 /* MySliderViewController.swift */,
 			);
 			path = ActionCard;
+			sourceTree = "<group>";
+		};
+		F03E54FD2520E37000D2EB56 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F03E54FE2520FA1100D2EB56 /* SlidingViewController.swift */,
+				F03E550025210F5D00D2EB56 /* SVCPanGestureConfiguration.swift */,
+				F03E55022521252000D2EB56 /* SVCState.swift */,
+				F03E550425212CC800D2EB56 /* UIPanGestureRecognizerExt.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +157,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F03E55032521252000D2EB56 /* SVCState.swift in Sources */,
 				F03E54EE2520E0B700D2EB56 /* ViewController.swift in Sources */,
 				F03E54EA2520E0B700D2EB56 /* AppDelegate.swift in Sources */,
+				F03E550125210F5D00D2EB56 /* SVCPanGestureConfiguration.swift in Sources */,
+				F03E550525212CC800D2EB56 /* UIPanGestureRecognizerExt.swift in Sources */,
 				F03E54EC2520E0B700D2EB56 /* SceneDelegate.swift in Sources */,
+				F03E54FF2520FA1100D2EB56 /* SlidingViewController.swift in Sources */,
+				F03E5507252139E900D2EB56 /* MySliderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
