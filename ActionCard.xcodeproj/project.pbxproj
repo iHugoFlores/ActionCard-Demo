@@ -17,6 +17,8 @@
 		F03E55032521252000D2EB56 /* SVCState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03E55022521252000D2EB56 /* SVCState.swift */; };
 		F03E550525212CC800D2EB56 /* UIPanGestureRecognizerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03E550425212CC800D2EB56 /* UIPanGestureRecognizerExt.swift */; };
 		F03E5507252139E900D2EB56 /* MySliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03E5506252139E900D2EB56 /* MySliderViewController.swift */; };
+		F03E550C25214A7700D2EB56 /* VerticalSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03E550B25214A7700D2EB56 /* VerticalSlideView.swift */; };
+		F03E550E25214AF700D2EB56 /* ActionCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03E550D25214AF700D2EB56 /* ActionCardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		F03E55022521252000D2EB56 /* SVCState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVCState.swift; sourceTree = "<group>"; };
 		F03E550425212CC800D2EB56 /* UIPanGestureRecognizerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPanGestureRecognizerExt.swift; sourceTree = "<group>"; };
 		F03E5506252139E900D2EB56 /* MySliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySliderViewController.swift; sourceTree = "<group>"; };
+		F03E550B25214A7700D2EB56 /* VerticalSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalSlideView.swift; sourceTree = "<group>"; };
+		F03E550D25214AF700D2EB56 /* ActionCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 		F03E54E82520E0B700D2EB56 /* ActionCard */ = {
 			isa = PBXGroup;
 			children = (
+				F03E550825214A1700D2EB56 /* Refactor */,
 				F03E54FD2520E37000D2EB56 /* Common */,
 				F03E54E92520E0B700D2EB56 /* AppDelegate.swift */,
 				F03E54EB2520E0B700D2EB56 /* SceneDelegate.swift */,
@@ -85,6 +90,31 @@
 				F03E550425212CC800D2EB56 /* UIPanGestureRecognizerExt.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		F03E550825214A1700D2EB56 /* Refactor */ = {
+			isa = PBXGroup;
+			children = (
+				F03E550A25214A4E00D2EB56 /* VerticalSlideView */,
+				F03E550925214A3D00D2EB56 /* ActionCard */,
+			);
+			path = Refactor;
+			sourceTree = "<group>";
+		};
+		F03E550925214A3D00D2EB56 /* ActionCard */ = {
+			isa = PBXGroup;
+			children = (
+				F03E550D25214AF700D2EB56 /* ActionCardViewController.swift */,
+			);
+			path = ActionCard;
+			sourceTree = "<group>";
+		};
+		F03E550A25214A4E00D2EB56 /* VerticalSlideView */ = {
+			isa = PBXGroup;
+			children = (
+				F03E550B25214A7700D2EB56 /* VerticalSlideView.swift */,
+			);
+			path = VerticalSlideView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +193,8 @@
 				F03E550125210F5D00D2EB56 /* SVCPanGestureConfiguration.swift in Sources */,
 				F03E550525212CC800D2EB56 /* UIPanGestureRecognizerExt.swift in Sources */,
 				F03E54EC2520E0B700D2EB56 /* SceneDelegate.swift in Sources */,
+				F03E550E25214AF700D2EB56 /* ActionCardViewController.swift in Sources */,
+				F03E550C25214A7700D2EB56 /* VerticalSlideView.swift in Sources */,
 				F03E54FF2520FA1100D2EB56 /* SlidingViewController.swift in Sources */,
 				F03E5507252139E900D2EB56 /* MySliderViewController.swift in Sources */,
 			);
