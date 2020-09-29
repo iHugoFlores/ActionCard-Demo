@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B9DF244252363290062006B /* VerticalSlideViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9DF243252363290062006B /* VerticalSlideViewDelegate.swift */; };
+		5B9DF246252363C90062006B /* VerticalSlideState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9DF245252363C90062006B /* VerticalSlideState.swift */; };
+		5B9DF248252368A00062006B /* PanGestureConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9DF247252368A00062006B /* PanGestureConfiguration.swift */; };
+		5B9DF24A252373060062006B /* MyNewSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9DF249252373060062006B /* MyNewSliderViewController.swift */; };
 		F03E54EA2520E0B700D2EB56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03E54E92520E0B700D2EB56 /* AppDelegate.swift */; };
 		F03E54EC2520E0B700D2EB56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03E54EB2520E0B700D2EB56 /* SceneDelegate.swift */; };
 		F03E54EE2520E0B700D2EB56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03E54ED2520E0B700D2EB56 /* ViewController.swift */; };
@@ -22,6 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B9DF243252363290062006B /* VerticalSlideViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalSlideViewDelegate.swift; sourceTree = "<group>"; };
+		5B9DF245252363C90062006B /* VerticalSlideState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalSlideState.swift; sourceTree = "<group>"; };
+		5B9DF247252368A00062006B /* PanGestureConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanGestureConfiguration.swift; sourceTree = "<group>"; };
+		5B9DF249252373060062006B /* MyNewSliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewSliderViewController.swift; sourceTree = "<group>"; };
 		F03E54E62520E0B700D2EB56 /* ActionCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActionCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F03E54E92520E0B700D2EB56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F03E54EB2520E0B700D2EB56 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +85,7 @@
 				F03E54F42520E0B800D2EB56 /* LaunchScreen.storyboard */,
 				F03E54F72520E0B800D2EB56 /* Info.plist */,
 				F03E5506252139E900D2EB56 /* MySliderViewController.swift */,
+				5B9DF249252373060062006B /* MyNewSliderViewController.swift */,
 			);
 			path = ActionCard;
 			sourceTree = "<group>";
@@ -113,6 +122,9 @@
 			isa = PBXGroup;
 			children = (
 				F03E550B25214A7700D2EB56 /* VerticalSlideView.swift */,
+				5B9DF243252363290062006B /* VerticalSlideViewDelegate.swift */,
+				5B9DF245252363C90062006B /* VerticalSlideState.swift */,
+				5B9DF247252368A00062006B /* PanGestureConfiguration.swift */,
 			);
 			path = VerticalSlideView;
 			sourceTree = "<group>";
@@ -193,8 +205,12 @@
 				F03E550125210F5D00D2EB56 /* SVCPanGestureConfiguration.swift in Sources */,
 				F03E550525212CC800D2EB56 /* UIPanGestureRecognizerExt.swift in Sources */,
 				F03E54EC2520E0B700D2EB56 /* SceneDelegate.swift in Sources */,
+				5B9DF244252363290062006B /* VerticalSlideViewDelegate.swift in Sources */,
+				5B9DF246252363C90062006B /* VerticalSlideState.swift in Sources */,
 				F03E550E25214AF700D2EB56 /* ActionCardViewController.swift in Sources */,
 				F03E550C25214A7700D2EB56 /* VerticalSlideView.swift in Sources */,
+				5B9DF24A252373060062006B /* MyNewSliderViewController.swift in Sources */,
+				5B9DF248252368A00062006B /* PanGestureConfiguration.swift in Sources */,
 				F03E54FF2520FA1100D2EB56 /* SlidingViewController.swift in Sources */,
 				F03E5507252139E900D2EB56 /* MySliderViewController.swift in Sources */,
 			);
