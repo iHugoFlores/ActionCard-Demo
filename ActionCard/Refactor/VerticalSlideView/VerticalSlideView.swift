@@ -40,55 +40,149 @@ public class VerticalSlideView: UIView {
     /**
      Pan Gesture Recognizer Object
     */
-    private var panGesture: UIPanGestureRecognizer?
+    private let panGesture = UIPanGestureRecognizer()
     
     /**
-     Maximum height value (relative to the superview) that can be reached by the **top of the view**
-     The default is 0, as to not assume the frame of the superview
+     Controls if if the new frame for gdragging interactions can be updated
     */
-    private var maxReachableHeight: CGFloat = 100 // This must be set to be that of the superview? Should it be var?
+    private var gestureEnabled = true
     
     /**
-     Minimum height value (relative to the superview) that can be reached by the **top of the view**
+     Frame for the top snap state
     */
-    private var minReachableHeight: CGFloat = 0
-    
-    /**
-     Frame for which the view is placed at the **Minimum Reachable Height**
-    */
-    private var minReachableFrame: CGRect {
-        CGRect(x: 0, y: (superview?.frame.height ?? 0) - minReachableHeight, width: frame.width, height: maxReachableHeight)
+    private var topSnapFrame: CGRect {
+        getFrameForState(baseFrame: superview?.frame ?? .zero, state: .snapTop)
     }
     
     /**
-     Frame for which the view is placed at the **Maximum Reachable Height**
+     Frame for the bottom snap state
     */
-    private var maxReachableFrame: CGRect {
-        CGRect(x: 0, y: (superview?.frame.height ?? 0) - maxReachableHeight, width: frame.width, height: maxReachableHeight)
+    private var bottomSnapFrame: CGRect {
+        getFrameForState(baseFrame: superview?.frame ?? .zero, state: .snapBottom)
     }
+    
+    /**
+     Inset value for which the bottom position will move to
+    */
+    private var bottomInsetHeight: CGFloat = 0
+    
+    /**
+     Inset value for which the top position will move to
+    */
+    private var topInsetHeight: CGFloat = 0
     
     /**
      State of the current vertical position of the view
     */
-    private var positionState: VerticalSlideState = .snapBottom // Should we set the state in a constructor instead?
+    private let positionState: VerticalSlideState
     
-    init() {
+    /**
+     Method used to update the frame value of the superview once it's added to one
+    */
+    public override func didMoveToSuperview() {
+        setFrameForStateAndInsets()
+    }
+
+    /**
+     State of the current vertical position of the view
+    */
+    private func setFrameForStateAndInsets() {
+        let superViewFrame = superview?.frame ?? .zero
+        let positionedFrame = getFrameForState(baseFrame: superViewFrame, state: positionState)
+        setViewLayer(frame: positionedFrame)
+    }
+    
+    private func getFrameForState(baseFrame: CGRect, state: VerticalSlideState) -> CGRect {
+        let stateFrame = panGestureConfig.getFrameFor(base: baseFrame, state: state)
+        return getFrameWithInsets(base: stateFrame)
+    }
+    
+    private func getFrameWithInsets(base: CGRect) -> CGRect {
+        let x = base.origin.x
+        let y = base.origin.y + topInsetHeight - bottomInsetHeight
+        let w = base.width
+        let h = base.height - topInsetHeight
+        return CGRect(x: x, y: y, width: w, height: h)
+    }
+    
+    init(initialState: VerticalSlideState = .snapBottom) {
+        positionState = initialState
+
         super.init(frame: .zero)
-        
-        panGesture = UIPanGestureRecognizer(target: self, action: #selector(viewWasDragged(_:)))
-        self.maxReachableHeight = superview?.bounds.height ?? 0
-        addGestureRecognizer(panGesture!)
-        maxReachableHeight = 200
-        
-        frame = maxReachableFrame
+
+        panGesture.addTarget(self, action: #selector(viewWasDragged(_:)))
+        addGestureRecognizer(panGesture)
     }
     
     @objc func viewWasDragged(_ gesture: UIPanGestureRecognizer) {
+        
+        defer { gesture.setTranslation(.zero, in: self) }
+        
+        if gesture.state == .ended { gestureEnabled = true }
+        
+        guard gestureEnabled else { return }
+        
         let translation = gesture.translation(in: self)
         let velocity = gesture.velocity(in: self)
         let newFrame = CGRect(x: 0, y: frame.minY + translation.y, width: frame.width, height: frame.height - translation.y)
-
+        
+        let topFrame = topSnapFrame
+        let bottomFrame = bottomSnapFrame
+        
+        if wereBoundLimitsTriggered(topFrame: topFrame, bottomFrame: bottomFrame, newFrame: newFrame) {
+            gestureEnabled = false
+            return
+        }
+        
+        if wereVelocityBoundsTriggered(velocity: velocity, gestureDirection: gesture.verticalDirection(target: self)) {
+            return
+        }
+        
+        if wereSnapBoundsTriggered(hasGestureEnded: gesture.state == .ended, newFrame: newFrame) {
+            return
+        }
+        
         setViewLayer(frame: newFrame)
+    }
+    
+    private func wereBoundLimitsTriggered(topFrame: CGRect, bottomFrame: CGRect, newFrame: CGRect) -> Bool {
+        if newFrame.minY + panGestureConfig.draggingTolerance < topFrame.minY {
+            setViewWithAnimation(frame: topSnapFrame, state: .snapTop, completion: nil)
+            return true
+        } else if newFrame.minY - panGestureConfig.draggingTolerance > bottomFrame.minY {
+            setViewWithAnimation(frame: bottomSnapFrame, state: .snapBottom, completion: nil)
+            return true
+        }
+        return false
+    }
+    
+    private func wereVelocityBoundsTriggered(velocity: CGPoint, gestureDirection: UIPanGestureRecognizer.GestureDirection) -> Bool {
+        if abs(velocity.y) >= panGestureConfig.velocityThreshold {
+            if gestureDirection == .up {
+                setViewWithAnimation(frame: topSnapFrame, state: .snapTop, completion: nil)
+                return true
+            } else if gestureDirection == .down {
+                setViewWithAnimation(frame: bottomSnapFrame, state: .snapBottom, completion: nil)
+                return true
+            }
+            return true
+        }
+        return false
+    }
+    
+    private func wereSnapBoundsTriggered(hasGestureEnded: Bool, newFrame: CGRect) -> Bool {
+        if hasGestureEnded {
+            let offset = (bottomSnapFrame.minY - topSnapFrame.minY) * panGestureConfig.snapThreshold
+            let snapThresholdY = bottomSnapFrame.minY - offset
+
+            if newFrame.minY <= snapThresholdY {
+                setViewWithAnimation(frame: topSnapFrame, state: .snapTop, completion: nil)
+            } else if newFrame.minY > snapThresholdY {
+                setViewWithAnimation(frame: bottomSnapFrame, state: .snapBottom, completion: nil)
+            }
+            return true
+        }
+        return false
     }
     
     private func setViewLayer(frame: CGRect) {
@@ -101,7 +195,7 @@ public class VerticalSlideView: UIView {
             withDuration: 0.2,
             delay: 0,
             usingSpringWithDamping: 1,
-            initialSpringVelocity: velocity / 1000, // Should this be just refactored as the input parameter?
+            initialSpringVelocity: velocity / 1000,
             options: [.curveEaseInOut, .allowUserInteraction],
             animations: {
                 self.layer.frame = frame
