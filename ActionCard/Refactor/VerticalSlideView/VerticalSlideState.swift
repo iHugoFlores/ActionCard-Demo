@@ -6,6 +6,8 @@
 //  Copyright © 2020 Hugo Flores Perez. All rights reserved.
 //
 
+import UIKit
+
 /**
  # VerticalSlideState
  Enum that describes the _position/displacement_ of the VerticalSliderView relative to it's superview
@@ -17,4 +19,14 @@
 */
 public enum VerticalSlideState {
     case snapTop, snapBottom, full, hidden, progressing
+    
+    public func getFrameHeight(baseHeight: CGFloat, configuration: PanGestureConfiguration) -> CGFloat {
+        switch self {
+        case .full: return baseHeight
+        case .hidden: return 0
+        case .snapBottom: return baseHeight * configuration.bottomSnapPercentage
+        case .snapTop: return baseHeight * configuration.topSnapPercentage
+        default: return baseHeight
+        }
+    }
 }
