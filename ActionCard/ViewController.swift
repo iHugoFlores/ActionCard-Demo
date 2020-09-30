@@ -10,9 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let slidingViewController = MySliderViewController()
+    //let slidingViewController = MySliderViewController()
     
     let newSlidingViewController = MyNewSliderViewController()
+    
+    let overlayView = UIView()
+    
+    let fullModeButton = UIButton(type: .system)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,18 +24,26 @@ class ViewController: UIViewController {
         view.backgroundColor = .red
         
         newSlidingViewController.backgroundColor = .white
-        
-        // If Bottom View Controller is a VC
-        //newSlidingViewController.view.frame = view.frame
-        //addChild(newSlidingViewController)
+
         view.addSubview(newSlidingViewController)
-        newSlidingViewController.frame = view.frame
-        //newSlidingViewController.didMove(toParent: self)
         
-//        slidingViewController.view.backgroundColor = .white
-//        // Functionality for addChildViewController
-//        addChild(slidingViewController)
-//        view.addSubview(slidingViewController.view)
-//        slidingViewController.didMove(toParent: self)
+//        overlayView.backgroundColor = UIColor(displayP3Red: 0.0, green: 0.2, blue: 0.7, alpha: 0.5)
+//        overlayView.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(overlayView)
+//        overlayView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+//        overlayView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+//        overlayView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+//        overlayView.bottomAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+//
+//        fullModeButton.setTitle("Full mode", for: .normal)
+//        fullModeButton.addTarget(self, action: #selector(setFullScreen), for: .touchUpInside)
+//        fullModeButton.translatesAutoresizingMaskIntoConstraints = false
+//        overlayView.addSubview(fullModeButton)
+//        fullModeButton.centerXAnchor.constraint(equalTo: overlayView.centerXAnchor).isActive = true
+//        fullModeButton.centerYAnchor.constraint(equalTo: overlayView.centerYAnchor).isActive = true
+    }
+    
+    @objc func setFullScreen() {
+        
     }
 }

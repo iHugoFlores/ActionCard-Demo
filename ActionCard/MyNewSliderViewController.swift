@@ -26,17 +26,13 @@ class MyNewSliderViewController: VerticalSlideView {
     let containerView = UIView()
     let tableView = UITableView()
     
-    override init() {
+    init() {
         super.init()
         setVerticalSlider()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func didMoveToSuperview() {
-        print(self.superview)
     }
     
 //    override func viewDidLoad() {
@@ -51,8 +47,6 @@ class MyNewSliderViewController: VerticalSlideView {
 //    }
     
     func setVerticalSlider() {
-        //verticalSliderView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
-        
         label.translatesAutoresizingMaskIntoConstraints = false
         addSubview(label)
         label.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
